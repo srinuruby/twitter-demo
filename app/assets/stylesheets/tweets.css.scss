@@ -1,0 +1,124 @@
+.tweets{
+  background: white;
+  min-height: 600px;
+  margin-top: 20px;
+  border-radius: 5px;
+  .heading{
+    font-size: 22px;
+    font-weight: bolder;
+    color: #66757f;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    padding:10px;
+    .number{
+      float: right;
+    }
+  }
+  hr{
+    margin: 0px;
+  }
+  .tweet{
+    min-height: 70px;
+    padding: 10px;
+    img{
+      width:50px;
+      float: left;
+    }
+    span.name{
+      margin-left: 10px;
+      font-weight: bolder;
+      line-height: 20px;
+    }
+    span.time-ago{
+      float: right;
+      color:#66757f;
+      font-size: 14px;
+    }
+    div.content{
+      margin-left: 60px;
+      line-height: 18px;
+      font-size: 16px;
+    }
+    &:hover{
+      background: #e1e8ed;
+    }
+  }
+}
+.profile-info{
+  background-image: url("/assets/grey_header_web.jpg");
+  margin-top: 20px;
+  border-radius: 5px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  color: white;
+  min-height: 150px;
+  text-align: center;
+
+  img{
+    position: static;
+    float: none;
+    border: 3px solid #fff;
+    width: 48px;
+    height: 48px;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  span.name{
+    line-height: 25px;
+    font-size: 18px;
+    color: white;
+    font-weight: bolder;
+    white-space: nowrap;
+    text-shadow: 0 1px 1px rgba(0,0,0,.5);
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  span.username{
+    color: white;
+    white-space: nowrap;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+}
+.stats{
+  background: white;
+  color: #8899a6;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: normal;
+  min-height: 60px;
+  hr{
+    margin: 0px;
+  }
+  .count{
+    font-size: 14px;
+    padding:10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-weight: bolder;
+    .number{
+      float: right;
+      color: #8899a6;
+    }
+    &:hover{
+      background: #e1e8ed;
+    }
+  }
+}
+.new-tweet{
+  background-color: #E5F2F7;
+  padding: 10px;
+  textarea{
+    border-color: #99CDE1;
+    padding: 6px 8px 5px;
+    line-height: 18px;
+    resize: none;
+    border-radius: 5px;
+  }
+  .button{
+    border-radius: 5px;
+  }
+}
+.actions{
+  float: right;
+}
+.full-width{
+  width:100%;
+}
