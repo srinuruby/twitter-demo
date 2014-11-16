@@ -1,7 +1,8 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.2.14'
-gem 'sqlite3'
+#gem 'sqlite3'
+gem 'pg'
 gem 'devise', '3.0.3'
 gem 'execjs'
 gem 'therubyracer'
