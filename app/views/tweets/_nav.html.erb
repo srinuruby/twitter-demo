@@ -1,0 +1,47 @@
+<div class="profile-info">
+  <img src="/assets/missing.png"/>
+  <br/><span class="name"><%=user.name%></span>
+  <br/><span class="username">@<%=user.username%></span>
+</div>
+<div class="stats">
+  <a href="/<%=user.username%>"><div class="count">
+    TWEETS
+    <span class="number"><%=tweets.length%></span>
+  </div>
+  </a>
+  <hr/>
+  <a href="/<%=user.username%>/following"><div class="count">
+    FOLLOWING
+    <span class="number"><%=followings.length%></span>
+  </div>
+  </a>
+  <hr/>
+  <a href="/<%=user.username%>/follower"><div class="count">
+    FOLLOWERS
+    <span class="number"><%=followers.length%></span>
+  </div>
+  </a>
+  <hr/>
+</div>
+<%if tweet%>
+    <div class="new-tweet">
+      <%= form_for(tweet) do |f| %>
+          <%=f.text_area :content, :rows=>"6" ,:maxlength=>"160"%>
+
+          <span>
+            (160 Chars)
+          </span>
+          <%=f.check_box :public%> Public
+          <%= f.submit :value=>'Tweet', :class=>'button tiny pull right'%>
+      <%end%>
+      <br/><br/>
+    </div>
+<%end%>
+<%if can_follow(current_user, user)%>
+    <form action="/follow/<%=user.id%>" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <button type="submit" class="button full-width">Follow</button>
+    </form>
+<%elsif following_id = can_unfollow(current_user, user)%>
+    <a href="/unfollow/<%=following_id%>" class="button alert full-width" data-method="delete">Unfollow</a>
+<%end%>

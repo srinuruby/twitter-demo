@@ -1,0 +1,28 @@
+<%tweets.each do |tweet|%>
+  <div class="tweet">
+    <div class="pull left">
+      <img src="/assets/missing.png"/>
+    </div>
+    <span class="name"><%=tweet.user ? tweet.user.name : 'No name'%> <%if tweet.public%><icon class="icon-globe"></icon><%else%><icon class="icon-group"></icon><%end%></span>
+    <span class="time-ago"><%=time_ago_in_words(tweet.created_at)%></span>
+    <br/>
+    <div class="content">
+      <%=tweet.content%>
+    </div>
+    <div class="actions">
+      <%if current_user and user == current_user%>
+          <%if tweet.public%>
+              <a href="/tweets/<%=tweet.id%>/private"><icon class="icon-group" data-tooltip class="has-tip" title="Make Private"></icon></a>
+          <%else%>
+              <a href="/tweets/<%=tweet.id%>/public"><icon class="icon-globe" data-tooltip class="has-tip" title="Make Public"></icon></a>
+          <%end%>
+          <a href="/tweets/<%=tweet.id%>" data-method="delete" data-confirm="Are you sure?"><icon class="icon-trash" data-tooltip class="has-tip" title="Remove"></icon></a>
+      <%else%>
+          <%if tweet.public or can_unfollow(current_user,user)%>
+            <a href="/tweets/<%=tweet.id%>/retweet"><icon class="icon-retweet" data-tooltip class="has-tip" title="Retweet"></icon></a>
+          <%end%>
+      <%end%>
+    </div>
+  </div>
+  <hr/>
+<%end%>

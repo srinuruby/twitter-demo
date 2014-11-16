@@ -1,0 +1,29 @@
+<section class="main">
+    <h1>Twitter Demo</h1>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name),:html=>{ :class=>"form-1"}) do |f| %>
+      <% if flash[:alert] %>
+          <ul class="flash-alert-small">
+                <li><%= flash[:alert] %></li>
+          </ul>
+      <% end %>
+  <p class="field">
+    <%= f.text_field :login, :placeholder=>'Email/Username' %>
+    <i class="icon-user icon-large"></i>
+  </p>
+
+      <p class="field">
+        <%= f.password_field :password, :placeholder=>'Password' %><i class="icon-lock icon-large"></i>
+      </p>
+
+
+
+      <p class="submit-2">
+        <button type="submit" name="submit">Login</button>
+      </p>
+      <br/>
+      <%= render "devise/shared/links" %>
+<% end %>
+
+</section>
+
+

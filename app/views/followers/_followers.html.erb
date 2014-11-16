@@ -1,0 +1,10 @@
+<%followers.each do |follower|%>
+    <div class="tweet">
+      <div class="pull left">
+        <img src="/assets/missing.png"/>
+      </div>
+      <span class="name"><%=follower.user ? follower.user.name : 'No name'%> </span>
+      <a href="/<%=follower.user.username%>"><span class="name"><%=follower.user ? "@"+follower.user.username : '@No name'%> </span></a>
+    </div>
+    <hr/>
+<%end%>

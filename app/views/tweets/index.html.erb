@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="small-4 columns">
+    <%=render :partial => 'tweets/nav', :locals=>{:tweets=>@tweets, :tweet=>@tweet, :user=>@user, :followings=>@followings, :followers=>@followers}%>
+  </div>
+  <div class="small-8 columns">
+    <div class="tweets">
+      <div class="heading">
+        Tweets<span class="number"><%=@tweets.length%></span>
+      </div>
+      <hr/>
+        <%=render :partial => 'tweets/tweets', :locals=>{:tweets=>@tweets, :user=>@user}%>
+    </div>
+  </div>
+</div>

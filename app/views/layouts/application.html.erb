@@ -1,14 +1,68 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Twitter</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<%= yield %>
+    <title><%= content_for?(:title) ? yield(:title) : "Twitter Demo" %></title>
 
-</body>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <%if user_signed_in?%>
+      <div class="contain-to-grid sticky">
+          <nav class="top-bar" data-topbar>
+            <ul class="title-area">
+              <li class="name">
+                <h1><a href="#">Twitter Demo</a></h1>
+              </li>
+              <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+            </ul>
+
+            <section class="top-bar-section">
+              <!-- Right Nav Section -->
+              <ul class="right">
+                <li class="has-dropdown">
+                  <a href="#"><%=current_user.email%></a>
+                  <ul class="dropdown">
+                    <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+                  </ul>
+                </li>
+              </ul>
+
+              <!-- Left Nav Section -->
+              <%if current_user and @user and current_user!=@user%>
+                  <ul class="left">
+                    <li><a href="/<%=current_user.username%>"><icon class="icon-user icon-large"></icon>Me</a></li>
+                  </ul>
+              <%end%>
+            </section>
+          </nav>
+      </div>
+      <%if flash[:alert] or flash[:notice]%>
+        <div class="alert-messages" id="message-drawer">
+        <div class="message">
+          <div class="message-inside">
+            <a role="button" class="icon-remove-sign"  onclick="jQuery('#message-drawer').remove();" href="#" style="display: block;">
+            </a>
+            <span class="message-text"><%=flash[:alert]%><%=flash[:notice]%></span>
+          </div>
+        </div>
+      </div>
+
+      <%end%>
+    <%end%>
+    <%= yield %>
+    <%= javascript_include_tag "application" %>
+  <script>
+      setTimeout(
+          function()
+          {
+              jQuery('#message-drawer').remove();
+          }, 2000);
+  </script>
+  </body>
 </html>

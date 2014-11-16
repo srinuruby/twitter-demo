@@ -1,0 +1,14 @@
+<%followings.each do |following|%>
+    <div class="tweet">
+      <div class="pull left">
+        <img src="/assets/missing.png"/>
+      </div>
+      <span class="name"><%=following.following ? following.following.name : 'No name'%> </span>
+      <a href="/<%=following.following.username%>"><span class="name"><%=following.following ? "@"+following.following.username : '@No name'%> </span></a>
+
+      <div class="actions">
+        <a href="/unfollow/<%=following.id%>" class="button tiny alert" data-method="delete">Unfollow</a>
+      </div>
+    </div>
+    <hr/>
+<%end%>
